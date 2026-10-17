@@ -3,14 +3,14 @@ const today = new Date();
 ---
 
 <footer>
-	<p class="copyright">&copy; {today.getFullYear()} Mike's Tire Service. All rights reserved.</p>
-	
-	<!-- Official Better Business Bureau Dynamic Seal Banner -->
+	<!-- Official Better Business Bureau Dynamic Seal Banner (Upscaled Size) -->
 	<div class="bbb-seal-container">
-		<a href="https://www.bbb.org/us/tn/clarksville/profile/tire-dealers/mikes-tire-service-0573-37187467/#sealclick" target="_blank" rel="nofollow">
-			<img src="https://seal-nashville.bbb.org/seals/blue-seal-200-42-bbb-37187467.png" style="border: 0;" alt="Mike's Tire Service BBB Business Review" />
+		<a href="https://bbb.org" target="_blank" rel="nofollow">
+			<img src="https://bbb.org" style="border: 0;" alt="Mike's Tire Service BBB Business Review" />
 		</a>
 	</div>
+
+	<p class="copyright">&copy; {today.getFullYear()} Mike's Tire Service. All rights reserved.</p>
 
 	<div class="social-links">
 		<!-- Social icons can be dropped here later if needed -->
@@ -30,23 +30,26 @@ const today = new Date();
 		justify-content: center;
 		box-sizing: border-box;
 	}
-	.copyright {
-		margin: 0;
-		text-align: center;
-		width: 100%;
-		display: block;
-	}
 	.bbb-seal-container {
-		margin-top: 1.5rem;
+		margin-bottom: 1.5rem;
 		display: flex;
 		justify-content: center;
 		align-items: center;
 		width: 100%;
 	}
 	.bbb-seal-container img {
-		max-width: 100%;
-		height: auto;
+		/* Scale modifications to increase size safely across layouts */
+		width: 260px !important; /* Bumped up from the stock 200px footprint */
+		max-width: 90% !important;
+		height: auto !important;
 		display: block;
+	}
+	.copyright {
+		margin: 0;
+		text-align: center;
+		width: 100%;
+		display: block;
+		font-size: 1rem;
 	}
 	.social-links {
 		display: flex;
