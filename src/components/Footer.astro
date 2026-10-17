@@ -3,17 +3,19 @@ const today = new Date();
 ---
 
 <footer>
-	<!-- Official Better Business Bureau Dynamic Badge Container -->
+	<!-- 1. The copyright stays on top in the code so the template layout doesn't break the image -->
+	<p class="copyright">&copy; {today.getFullYear()} Mike's Tire Service. All rights reserved.</p>
+
+	<!-- 2. The exact official BBB snippet stays at the bottom in the code -->
 	<div class="bbb-seal-wrapper">
-		<a class="idxtxt bbbtheme-blue-seal-200-42-bbb-37187467" target="_blank" rel="noopener noreferrer" href="https://bbb.org">
-			Mike's Tire Service BBB Business Review
+		<a href="https://bbb.org" target="_blank" rel="nofollow">
+			<img src="https://bbb.org" style="border: 0;" alt="Mike's Tire Service BBB Business Review" />
 		</a>
 	</div>
 
-	<p class="copyright">&copy; {today.getFullYear()} Mike's Tire Service. All rights reserved.</p>
-
-	<!-- This secure script forces the real BBB seal image to load automatically -->
-	<script type="text/javascript" src="https://bbb.org" is:inline></script>
+	<div class="social-links">
+		<!-- Social links placeholder -->
+	</div>
 </footer>
 
 <style>
@@ -30,26 +32,26 @@ const today = new Date();
 		box-sizing: border-box;
 	}
 	
+	/* THIS CODES FLIPS THE POSITION VISUALLY: Forces the seal to display on top of the copyright row */
 	.bbb-seal-wrapper {
+		order: 1 !important; 
 		margin-bottom: 1.5rem !important;
 		display: flex !important;
 		justify-content: center !important;
 		align-items: center !important;
 		width: 100% !important;
-		min-height: 42px;
 	}
 
-	/* Ensures the BBB's generated image centers perfectly and stays crisp */
-	.bbb-seal-wrapper :global(img) {
-		width: 240px !important;
+	.bbb-seal-wrapper img {
+		width: 260px !important; /* Kept it at that nice upscaled size you wanted */
 		max-width: 90% !important;
 		height: auto !important;
 		display: block !important;
-		margin: 0 auto !important;
-		border: none !important;
 	}
 
+	/* Forces the copyright row to display at the absolute bottom */
 	.copyright {
+		order: 2 !important; 
 		margin: 0 !important;
 		text-align: center !important;
 		width: 100% !important;
