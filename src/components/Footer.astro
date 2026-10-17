@@ -3,29 +3,34 @@ const today = new Date();
 ---
 
 <footer>
-	&copy; {today.getFullYear()} Mike's Tire Service. All rights reserved.
+	<p class="copyright">&copy; {today.getFullYear()} Mike's Tire Service. All rights reserved.</p>
 	<div class="social-links">
-		<!-- You can add links to your business social pages here later if you want! -->
+		<!-- Social icons can be dropped here later if needed -->
 	</div>
 </footer>
 <style>
 	footer {
-		padding: 2rem 1rem 6rem 1rem;
+		padding: 3rem 1rem;
 		background: linear-gradient(var(--gray-gradient)) no-repeat;
 		color: rgb(var(--gray));
 		text-align: center;
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		box-sizing: border-box;
+	}
+	.copyright {
+		margin: 0;
+		text-align: center;
+		width: 100%;
+		display: block;
 	}
 	.social-links {
 		display: flex;
 		justify-content: center;
 		gap: 1rem;
 		margin-top: 1rem;
-	}
-	.social-links a {
-		text-decoration: none;
-		color: rgb(var(--gray));
-	}
-	.social-links a:hover {
-		color: rgb(var(--gray-dark));
 	}
 </style>
