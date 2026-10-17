@@ -19,7 +19,8 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 				<p class="tagline">Reliable, Affordable New & Used Tires in Clarksville, TN</p>
 				<div class="cta-buttons">
 					<a href="tel:9318962440" class="btn-primary">📞 Call Now: (931) 896-2440</a>
-					<a href="https://apple.com" class="btn-secondary">📍 Get Directions</a>
+					<!-- The button now calls our script instead of a raw link -->
+					<button id="mapsButton" class="btn-secondary">📍 Get Directions</button>
 				</div>
 			</section>
 
@@ -49,12 +50,31 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 						<p><strong>Mike's Tire Service</strong></p>
 						<p>1114 College St.</p>
 						<p>Clarksville, TN 37040</p>
-						<p><em>Stop by or call ahead for faster service!</em></p>
+						<p><em>Stop by or call ahead for fast service!</em></p>
 					</div>
 				</div>
 			</section>
 		</main>
 		<Footer />
+
+		<!-- This script handles the redirection dynamically based on device -->
+		<script>
+			const mapsButton = document.getElementById('mapsButton');
+			if (mapsButton) {
+				mapsButton.addEventListener('click', () => {
+					const address = "1114 College St, Clarksville, TN 37040";
+					const isApple = /iPhone|iPad|iPod|Macintosh/i.test(navigator.userAgent);
+					
+					if (isApple) {
+						// Forces Apple devices straight into the native Apple Maps app
+						window.open(`maps://?q=${encodeURIComponent(address)}`, '_blank');
+					} else {
+						// Forces Android and Windows/Linux desktops straight into Google Maps
+						window.open(`https://google.com{encodeURIComponent(address)}`, '_blank');
+					}
+				});
+			}
+		</script>
 	</body>
 </html>
 
@@ -75,9 +95,11 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 	}
 	.hero h1 { font-size: 2.5rem; margin-bottom: 0.5rem; color: #fff; }
 	.tagline { font-size: 1.2rem; color: #ccc; }
-	.cta-buttons { margin-top: 1.5rem; display: flex; gap: 1rem; justify-content: center; }
+	.cta-buttons { margin-top: 1.5rem; display: flex; gap: 1rem; justify-content: center; align-items: center; }
 	.btn-primary { background: #ff4500; color: white; padding: 0.8rem 1.5rem; border-radius: 5px; text-decoration: none; font-weight: bold; }
-	.btn-secondary { background: #333; color: white; padding: 0.8rem 1.5rem; border-radius: 5px; text-decoration: none; }
+	/* Styled the button element to perfectly match your link designs */
+	.btn-secondary { background: #333; color: white; padding: 0.8rem 1.5rem; border-radius: 5px; text-decoration: none; border: none; font-size: 1rem; cursor: pointer; font-weight: normal; font-family: sans-serif; }
+	.btn-secondary:hover { background: #444; }
 	.services, .info { margin-top: 3rem; }
 	h2 { border-bottom: 2px solid #ccc; padding-bottom: 0.5rem; margin-bottom: 1rem; }
 	ul { list-style-type: none; padding: 0; }
