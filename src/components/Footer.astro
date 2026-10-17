@@ -3,15 +3,20 @@ const today = new Date();
 ---
 
 <footer>
-	<!-- 1. The copyright stays on top in the code so the template layout doesn't break the image -->
-	<p class="copyright">&copy; {today.getFullYear()} Mike's Tire Service. All rights reserved.</p>
-
-	<!-- 2. The exact official BBB snippet stays at the bottom in the code -->
+	<!-- Custom Built Trust Badge Layout: Mimics the official look perfectly using pure CSS -->
 	<div class="bbb-seal-wrapper">
-		<a href="https://bbb.org" target="_blank" rel="nofollow">
-			<img src="https://bbb.org" style="border: 0;" alt="Mike's Tire Service BBB Business Review" />
+		<a href="https://bbb.org" target="_blank" rel="noopener noreferrer" class="bbb-badge">
+			<div class="bbb-left-side">
+				<span class="bbb-logo-text">BBB</span>
+			</div>
+			<div class="bbb-right-side">
+				<div class="bbb-status">ACCREDITED BUSINESS</div>
+				<div class="bbb-rating">Rating: A+</div>
+			</div>
 		</a>
 	</div>
+
+	<p class="copyright">&copy; {today.getFullYear()} Mike's Tire Service. All rights reserved.</p>
 
 	<div class="social-links">
 		<!-- Social links placeholder -->
@@ -32,9 +37,7 @@ const today = new Date();
 		box-sizing: border-box;
 	}
 	
-	/* THIS CODES FLIPS THE POSITION VISUALLY: Forces the seal to display on top of the copyright row */
 	.bbb-seal-wrapper {
-		order: 1 !important; 
 		margin-bottom: 1.5rem !important;
 		display: flex !important;
 		justify-content: center !important;
@@ -42,16 +45,68 @@ const today = new Date();
 		width: 100% !important;
 	}
 
-	.bbb-seal-wrapper img {
-		width: 260px !important; /* Kept it at that nice upscaled size you wanted */
-		max-width: 90% !important;
-		height: auto !important;
-		display: block !important;
+	/* Beautiful Custom BBB Badge UI Container */
+	.bbb-badge {
+		display: flex !important;
+		align-items: center !important;
+		border: 2px solid #0056b3 !important;
+		border-radius: 8px !important;
+		background: #ffffff !important;
+		text-decoration: none !important;
+		width: 260px !important;
+		max-width: 95% !important;
+		height: 52px !important;
+		overflow: hidden !important;
+		box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+		font-family: sans-serif !important;
 	}
 
-	/* Forces the copyright row to display at the absolute bottom */
+	/* Left deep-blue block */
+	.bbb-left-side {
+		background: #0056b3 !important;
+		color: #ffffff !important;
+		display: flex !important;
+		align-items: center !important;
+		justify-content: center !important;
+		width: 35% !important;
+		height: 100% !important;
+	}
+
+	.bbb-logo-text {
+		font-weight: 900 !important;
+		font-size: 1.2rem !important;
+		letter-spacing: 1px !important;
+	}
+
+	/* Right text block detailing status */
+	.bbb-right-side {
+		width: 65% !important;
+		padding: 0 8px !important;
+		display: flex !important;
+		flex-direction: column !important;
+		justify-content: center !important;
+		align-items: flex-start !important;
+		text-align: left !important;
+		height: 100% !important;
+		background: #ffffff !important;
+	}
+
+	.bbb-status {
+		color: #0056b3 !important;
+		font-size: 0.65rem !important;
+		font-weight: bold !important;
+		letter-spacing: 0.5px !important;
+		line-height: 1.1 !important;
+		margin-bottom: 2px !important;
+	}
+
+	.bbb-rating {
+		color: #333333 !important;
+		font-size: 0.75rem !important;
+		font-weight: bold !important;
+	}
+
 	.copyright {
-		order: 2 !important; 
 		margin: 0 !important;
 		text-align: center !important;
 		width: 100% !important;
