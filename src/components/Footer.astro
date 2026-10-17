@@ -4,10 +4,19 @@ const today = new Date();
 
 <footer>
 	<p class="copyright">&copy; {today.getFullYear()} Mike's Tire Service. All rights reserved.</p>
+	
+	<!-- Official Better Business Bureau Dynamic Seal Banner -->
+	<div class="bbb-seal-container">
+		<a href="https://www.bbb.org/us/tn/clarksville/profile/tire-dealers/mikes-tire-service-0573-37187467/#sealclick" target="_blank" rel="nofollow">
+			<img src="https://seal-nashville.bbb.org/seals/blue-seal-200-42-bbb-37187467.png" style="border: 0;" alt="Mike's Tire Service BBB Business Review" />
+		</a>
+	</div>
+
 	<div class="social-links">
 		<!-- Social icons can be dropped here later if needed -->
 	</div>
 </footer>
+
 <style>
 	footer {
 		padding: 3rem 1rem;
@@ -25,6 +34,18 @@ const today = new Date();
 		margin: 0;
 		text-align: center;
 		width: 100%;
+		display: block;
+	}
+	.bbb-seal-container {
+		margin-top: 1.5rem;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+	}
+	.bbb-seal-container img {
+		max-width: 100%;
+		height: auto;
 		display: block;
 	}
 	.social-links {
