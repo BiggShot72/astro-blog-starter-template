@@ -19,7 +19,6 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 				<p class="tagline">Reliable, Affordable New & Used Tires in Clarksville, TN</p>
 				<div class="cta-buttons">
 					<a href="tel:9318962440" class="btn-primary">📞 Call Now: (931) 896-2440</a>
-					<!-- Using a native geo-protocol structure forces phones to drop browser links and open map apps directly -->
 					<a href="geo:0,0?q=Mikes+Tire+Service+1114+College+St+Clarksville+TN+37040" class="btn-secondary">📍 Open Google Maps</a>
 				</div>
 			</section>
@@ -58,6 +57,23 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 		<Footer />
 	</body>
 </html>
+
+<style is:global>
+	/* Global mobile-only layout override to fix the alignment squeeze */
+	@media (max-width: 600px) {
+		body {
+			padding-left: 0 !important;
+			padding-right: 0 !important;
+			margin: 0 !important;
+			width: 100% !important;
+			overflow-x: hidden;
+		}
+		main {
+			padding: 1.5rem !important;
+			box-sizing: border-box;
+		}
+	}
+</style>
 
 <style>
 	main {
