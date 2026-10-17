@@ -23,7 +23,6 @@ import { SITE_TITLE } from '../consts';
 		margin: 0;
 		font-size: 1.25rem;
 	}
-
 	h2 a,
 	h2 a.active {
 		text-decoration: none;
@@ -52,5 +51,20 @@ import { SITE_TITLE } from '../consts';
 		text-decoration: none;
 		border-bottom-color: #ff4500;
 		font-weight: bold;
+	}
+
+	/* Mobile Screen Specific Rules */
+	@media (max-width: 600px) {
+		nav {
+			flex-direction: column;
+			gap: 0.75rem;
+			text-align: center;
+			padding: 1rem 0 0.5rem 0;
+		}
+		.internal-links {
+			justify-content: center;
+			width: 100%;
+			gap: 2rem;
+		}
 	}
 </style>
