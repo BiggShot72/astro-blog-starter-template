@@ -59,18 +59,62 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 </html>
 
 <style is:global>
-	/* Global mobile-only layout override to fix the alignment squeeze */
+	/* This absolute master override cracks open the template layout container constraints on phones */
 	@media (max-width: 600px) {
-		body {
-			padding-left: 0 !important;
-			padding-right: 0 !important;
+		html, body {
 			margin: 0 !important;
+			padding: 0 !important;
 			width: 100% !important;
-			overflow-x: hidden;
+			max-width: 100% !important;
+			overflow-x: hidden !important;
 		}
-		main {
-			padding: 1.5rem !important;
-			box-sizing: border-box;
+		
+		/* Forces the hidden container file to expand full width */
+		body > div, 
+		main, 
+		header, 
+		nav,
+		footer {
+			max-width: 100% !important;
+			width: 100% !important;
+			padding-left: 1rem !important;
+			padding-right: 1rem !important;
+			box-sizing: border-box !important;
+			margin: 0 auto !important;
+		}
+
+		/* Centers the text elements and fixes font sizing layout glitches */
+		nav {
+			display: flex !important;
+			flex-direction: column !important;
+			align-items: center !important;
+			justify-content: center !important;
+			text-align: center !important;
+		}
+		
+		nav h2, .site-title {
+			font-size: 1.75rem !important;
+			width: 100% !important;
+			text-align: center !important;
+			margin-bottom: 0.5rem !important;
+		}
+
+		.internal-links {
+			display: flex !important;
+			justify-content: center !important;
+			gap: 2.5rem !important;
+			width: 100% !important;
+		}
+
+		nav a {
+			font-size: 1.2rem !important;
+			padding: 0.5rem !important;
+		}
+		
+		footer, footer p, .copyright {
+			text-align: center !important;
+			font-size: 1.1rem !important;
+			width: 100% !important;
 		}
 	}
 </style>
