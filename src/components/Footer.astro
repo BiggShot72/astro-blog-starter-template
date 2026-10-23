@@ -18,6 +18,11 @@ const today = new Date();
 
 	<p class="copyright">&copy; {today.getFullYear()} Mike's Tire Service. All rights reserved.</p>
 
+	<!-- Kafene Credit Link Placement -->
+	<p class="credit-link">
+		Website built using <a href="https://gokafene.com/UmiqtJf" target="_blank" rel="noopener noreferrer">Kafene Credit</a>
+	</p>
+
 	<div class="social-links">
 		<!-- Social links placeholder -->
 	</div>
@@ -107,10 +112,29 @@ const today = new Date();
 	}
 
 	.copyright {
-		margin: 0 !important;
+		margin: 0 0 0.5rem 0 !important;
 		text-align: center !important;
 		width: 100% !important;
 		display: block !important;
 		font-size: 1rem !important;
+	}
+
+	/* Styled to match your footer's fonts and colors nicely */
+	.credit-link {
+		margin: 0 !important;
+		text-align: center !important;
+		width: 100% !important;
+		display: block !important;
+		font-size: 0.85rem !important;
+		opacity: 0.8;
+	}
+
+	.credit-link a {
+		color: currentColor;
+		text-decoration: underline;
+	}
+
+	.credit-link a:hover {
+		opacity: 1;
 	}
 </style>
