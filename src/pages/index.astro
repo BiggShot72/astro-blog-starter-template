@@ -161,7 +161,6 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 		</script>
 	</body>
 </html>
-
 <style is:global>
 	/* This absolute master override cracks open the template layout container constraints on phones */
 	@media (max-width: 600px) {
@@ -325,3 +324,95 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 		border: 1px solid #ff4500;
 	}
 	.result-label { display: block; font-size: 0.85rem; color: #aaa; margin-bottom: 0.25rem; }
+	.result-card strong { font-size: 1.4rem; color: white; }
+
+	/* Redesigned Financing Styles */
+	.financing { text-align: center; margin-bottom: 3rem; }
+	.financing-card { 
+		background: #ffffff; 
+		padding: 3rem 2rem; 
+		border-radius: 12px; 
+		border: 1px solid #e1e8ed; 
+		box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+	}
+	
+	/* Custom CSS Logo replicating clean typography */
+	.kafene-brand-logo {
+		display: inline-flex;
+		flex-direction: column;
+		align-items: center;
+		margin-bottom: 1.5rem;
+	}
+	.logo-power {
+		font-size: 0.65rem;
+		letter-spacing: 0.15rem;
+		color: #7b7c83;
+		font-weight: 700;
+		margin-bottom: -0.2rem;
+	}
+	.logo-main {
+		font-size: 2.2rem;
+		font-weight: 800;
+		color: #060709;
+		letter-spacing: -0.05rem;
+		font-family: 'Arial Black', sans-serif;
+	}
+	
+	.financing-card h3 { 
+		margin-top: 0.5rem; 
+		font-size: 1.6rem;
+		color: #111; 
+	}
+	.financing-subtitle { 
+		font-size: 1.15rem; 
+		color: #555; 
+		margin-bottom: 2.5rem; 
+		max-width: 600px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	
+	/* Layout Grid for the Trust Features */
+	.badge-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+		gap: 1.5rem;
+		margin-bottom: 2.5rem;
+	}
+	.trust-badge {
+		background: #f8f9fa;
+		padding: 1.5rem;
+		border-radius: 8px;
+		border: 1px solid #edf0f2;
+		transition: transform 0.2s ease;
+	}
+	.trust-badge:hover {
+		transform: translateY(-2px);
+	}
+	.badge-icon {
+		font-size: 2rem;
+		margin-bottom: 0.5rem;
+	}
+	.badge-title {
+		font-weight: bold;
+		font-size: 1.1rem;
+		color: #111;
+		margin-bottom: 0.25rem;
+	}
+	.badge-desc {
+		font-size: 0.9rem;
+		color: #666;
+		line-height: 1.3;
+	}
+	
+	.financing-cta { 
+		display: flex; 
+		justify-content: center; 
+		margin-bottom: 1rem;
+	}
+	.disclaimer {
+		font-size: 0.8rem;
+		color: #888;
+		margin-top: 1rem;
+	}
+</style>
