@@ -33,7 +33,8 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 					<li><strong>Tire Rotation</strong> – Extend the life of your tread.</li>
 				</ul>
 			</section>
-            			<!-- Interactive Tire Size Tool -->
+
+			<!-- Interactive Tire Size Tool -->
 			<section class="tire-tool" id="tire-tool">
 				<h2>Tire Size Lookup & Guide</h2>
 				<div class="tool-container">
@@ -71,56 +72,9 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 							<strong id="out-sidewall">5.5 inches</strong>
 						</div>
 					</div>
-
-					<!-- Popular Local Fits Reference Grid -->
-					<div class="common-sizes">
-						<h3>🚗 Common Sizes We Stock Daily</h3>
-						<div class="size-tags">
-							<button class="size-tag" data-w="195" data-a="65" data-wh="15">195/65R15</button>
-							<button class="size-tag" data-w="205" data-a="55" data-wh="16">205/55R16</button>
-							<button class="size-tag" data-w="215" data-a="65" data-wh="16">215/65R16</button>
-							<button class="size-tag" data-w="225" data-a="65" data-wh="17">225/65R17</button>
-							<button class="size-tag" data-w="265" data-a="70" data-wh="17">265/70R17</button>
-						</div>
-					</div>
 				</div>
 			</section>
 
-			<!-- Client-Side Engine Initialization -->
-			<script is:inline>
-				function calculateTireSpecs() {
-					const width = parseFloat(document.getElementById('width').value);
-					const aspect = parseFloat(document.getElementById('aspect').value);
-					const wheel = parseFloat(document.getElementById('wheel').value);
-
-					if (!width || !aspect || !wheel) return;
-
-					// Calculation formula for tire dimensions
-					const sidewallMm = width * (aspect / 100);
-					const sidewallInches = sidewallMm / 25.4;
-					const totalHeightInches = (sidewallInches * 2) + wheel;
-
-					document.getElementById('out-sidewall').innerText = sidewallInches.toFixed(1) + ' inches';
-					document.getElementById('out-height').innerText = totalHeightInches.toFixed(1) + ' inches';
-				}
-
-				// DOM Event Hookups after load
-				document.addEventListener('DOMContentLoaded', () => {
-					document.getElementById('calc-btn').addEventListener('click', calculateTireSpecs);
-
-					// Clicking a popular preset badge fast-fills the form
-					document.querySelectorAll('.size-tag').forEach(btn => {
-						btn.addEventListener('click', (e) => {
-							document.getElementById('width').value = e.target.getAttribute('data-w');
-							document.getElementById('aspect').value = e.target.getAttribute('data-a');
-							document.getElementById('wheel').value = e.target.getAttribute('data-wh');
-							calculateTireSpecs();
-						});
-					});
-				});
-			</script>
-
-            
 			<!-- Hours & Location -->
 			<section class="info" id="location">
 				<h2>Shop Hours & Location</h2>
@@ -141,7 +95,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 				</div>
 			</section>
 
-						<!-- Financing Section -->
+			<!-- Financing Section -->
 			<section class="financing" id="financing">
 				<h2>Easy Tire Financing</h2>
 				<div class="financing-card">
@@ -179,9 +133,32 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 					<p class="disclaimer">Must be 18+ with a valid ID and active checking account to apply.</p>
 				</div>
 			</section>
-
 		</main>
 		<Footer />
+
+		<!-- Client-Side Engine Initialization -->
+		<script is:inline>
+			function calculateTireSpecs() {
+				const width = parseFloat(document.getElementById('width').value);
+				const aspect = parseFloat(document.getElementById('aspect').value);
+				const wheel = parseFloat(document.getElementById('wheel').value);
+
+				if (!width || !aspect || !wheel) return;
+
+				// Calculation formula for tire dimensions
+				const sidewallMm = width * (aspect / 100);
+				const sidewallInches = sidewallMm / 25.4;
+				const totalHeightInches = (sidewallInches * 2) + wheel;
+
+				document.getElementById('out-sidewall').innerText = sidewallInches.toFixed(1) + ' inches';
+				document.getElementById('out-height').innerText = totalHeightInches.toFixed(1) + ' inches';
+			}
+
+			// DOM Event Hookup after load
+			document.addEventListener('DOMContentLoaded', () => {
+				document.getElementById('calc-btn').addEventListener('click', calculateTireSpecs);
+			});
+		</script>
 	</body>
 </html>
 
@@ -266,107 +243,13 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 	.cta-buttons { margin-top: 1.5rem; display: flex; gap: 1rem; justify-content: center; }
 	.btn-primary { background: #ff4500; color: white; padding: 0.8rem 1.5rem; border-radius: 5px; text-decoration: none; font-weight: bold; display: inline-block; }
 	.btn-secondary { background: #333; color: white; padding: 0.8rem 1.5rem; border-radius: 5px; text-decoration: none; display: inline-block; }
-	.services, .info, .financing { margin-top: 3rem; }
+	.services, .info, .financing, .tire-tool { margin-top: 3rem; }
 	h2 { border-bottom: 2px solid #ccc; padding-bottom: 0.5rem; margin-bottom: 1rem; }
 	ul { list-style-type: none; padding: 0; }
 	li { padding: 0.5rem 0; font-size: 1.1rem; }
 	.info-grid { display: flex; gap: 2rem; justify-content: space-between; flex-wrap: wrap; }
 	
-		/* Redesigned Financing Styles */
-	.financing { 
-		text-align: center; 
-		margin-top: 4rem;
-		margin-bottom: 3rem; 
-	}
-	.financing-card { 
-		background: #ffffff; 
-		padding: 3rem 2rem; 
-		border-radius: 12px; 
-		border: 1px solid #e1e8ed; 
-		box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-	}
-	
-	/* Custom CSS Logo replicating Kafene's clean typography */
-	.kafene-brand-logo {
-		display: inline-flex;
-		flex-direction: column;
-		align-items: center;
-		margin-bottom: 1.5rem;
-	}
-	.logo-power {
-		font-size: 0.65rem;
-		letter-spacing: 0.15rem;
-		color: #7b7c83;
-		font-weight: 700;
-		margin-bottom: -0.2rem;
-	}
-	.logo-main {
-		font-size: 2.2rem;
-		font-weight: 800;
-		color: #060709;
-		letter-spacing: -0.05rem;
-		font-family: 'Arial Black', sans-serif;
-	}
-	
-	.financing-card h3 { 
-		margin-top: 0.5rem; 
-		font-size: 1.6rem;
-		color: #111; 
-	}
-	.financing-subtitle { 
-		font-size: 1.15rem; 
-		color: #555; 
-		margin-bottom: 2.5rem; 
-		max-width: 600px;
-		margin-left: auto;
-		margin-right: auto;
-	}
-	
-	/* Layout Grid for the Trust Features */
-	.badge-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-		gap: 1.5rem;
-		margin-bottom: 2.5rem;
-	}
-	.trust-badge {
-		background: #f8f9fa;
-		padding: 1.5rem;
-		border-radius: 8px;
-		border: 1px solid #edf0f2;
-		transition: transform 0.2s ease;
-	}
-	.trust-badge:hover {
-		transform: translateY(-2px);
-	}
-	.badge-icon {
-		font-size: 2rem;
-		margin-bottom: 0.5rem;
-	}
-	.badge-title {
-		font-weight: bold;
-		font-size: 1.1rem;
-		color: #111;
-		margin-bottom: 0.25rem;
-	}
-	.badge-desc {
-		font-size: 0.9rem;
-		color: #666;
-		line-height: 1.3;
-	}
-	
-	.financing-cta { 
-		display: flex; 
-		justify-content: center; 
-		margin-bottom: 1rem;
-	}
-	.disclaimer {
-		font-size: 0.8rem;
-		color: #888;
-		margin-top: 1rem;
-	}
-     	/* Tire Lookup Block Layout */
-	.tire-tool { margin-top: 4rem; }
+	/* Tire Lookup Block Layout */
 	.tool-container {
 		background: #111111;
 		color: #ffffff;
@@ -442,23 +325,3 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 		border: 1px solid #ff4500;
 	}
 	.result-label { display: block; font-size: 0.85rem; color: #aaa; margin-bottom: 0.25rem; }
-	.result-card strong { font-size: 1.4rem; color: white; }
-
-	/* Fast-Click Preset Badge Row */
-	.common-sizes { margin-top: 2rem; border-top: 1px solid #333; padding-top: 1.5rem; }
-	.common-sizes h3 { font-size: 1.1rem; color: #fff; margin-bottom: 1rem; }
-	.size-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; }
-	.size-tag {
-		background: #333;
-		color: white;
-		border: 1px solid #444;
-		padding: 0.4rem 0.8rem;
-		border-radius: 20px;
-		cursor: pointer;
-		font-size: 0.9rem;
-		transition: all 0.2s ease;
-		box-sizing: border-box;
-	}
-	.size-tag:hover { background: #ff4500; border-color: #ff4500; }
-
-</style>
