@@ -33,7 +33,94 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 					<li><strong>Tire Rotation</strong> – Extend the life of your tread.</li>
 				</ul>
 			</section>
+            			<!-- Interactive Tire Size Tool -->
+			<section class="tire-tool" id="tire-tool">
+				<h2>Tire Size Lookup & Guide</h2>
+				<div class="tool-container">
+					<p class="tool-intro">Unsure what the numbers on your tire sidewall mean? Enter them below to see exactly what you are running!</p>
+					
+					<div class="calculator-box">
+						<div class="input-row">
+							<div class="input-group">
+								<label for="width">Width (mm)</label>
+								<input type="number" id="width" value="215" placeholder="e.g. 215" />
+							</div>
+							<div class="input-sep">/</div>
+							<div class="input-group">
+								<label for="aspect">Aspect Ratio</label>
+								<input type="number" id="aspect" value="65" placeholder="e.g. 65" />
+							</div>
+							<div class="input-sep">R</div>
+							<div class="input-group">
+								<label for="wheel">Wheel Size (in)</label>
+								<input type="number" id="wheel" value="16" placeholder="e.g. 16" />
+							</div>
+						</div>
+						
+						<button id="calc-btn" class="btn-primary">📐 Calculate Overall Specs</button>
+					</div>
 
+					<!-- Real-time Dynamic Outputs -->
+					<div class="results-box" id="results-box">
+						<div class="result-card">
+							<span class="result-label">Total Tire Height:</span>
+							<strong id="out-height">27.0 inches</strong>
+						</div>
+						<div class="result-card">
+							<span class="result-label">Sidewall Height:</span>
+							<strong id="out-sidewall">5.5 inches</strong>
+						</div>
+					</div>
+
+					<!-- Popular Local Fits Reference Grid -->
+					<div class="common-sizes">
+						<h3>🚗 Common Sizes We Stock Daily</h3>
+						<div class="size-tags">
+							<button class="size-tag" data-w="195" data-a="65" data-wh="15">195/65R15</button>
+							<button class="size-tag" data-w="205" data-a="55" data-wh="16">205/55R16</button>
+							<button class="size-tag" data-w="215" data-a="65" data-wh="16">215/65R16</button>
+							<button class="size-tag" data-w="225" data-a="65" data-wh="17">225/65R17</button>
+							<button class="size-tag" data-w="265" data-a="70" data-wh="17">265/70R17</button>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Client-Side Engine Initialization -->
+			<script is:inline>
+				function calculateTireSpecs() {
+					const width = parseFloat(document.getElementById('width').value);
+					const aspect = parseFloat(document.getElementById('aspect').value);
+					const wheel = parseFloat(document.getElementById('wheel').value);
+
+					if (!width || !aspect || !wheel) return;
+
+					// Calculation formula for tire dimensions
+					const sidewallMm = width * (aspect / 100);
+					const sidewallInches = sidewallMm / 25.4;
+					const totalHeightInches = (sidewallInches * 2) + wheel;
+
+					document.getElementById('out-sidewall').innerText = sidewallInches.toFixed(1) + ' inches';
+					document.getElementById('out-height').innerText = totalHeightInches.toFixed(1) + ' inches';
+				}
+
+				// DOM Event Hookups after load
+				document.addEventListener('DOMContentLoaded', () => {
+					document.getElementById('calc-btn').addEventListener('click', calculateTireSpecs);
+
+					// Clicking a popular preset badge fast-fills the form
+					document.querySelectorAll('.size-tag').forEach(btn => {
+						btn.addEventListener('click', (e) => {
+							document.getElementById('width').value = e.target.getAttribute('data-w');
+							document.getElementById('aspect').value = e.target.getAttribute('data-a');
+							document.getElementById('wheel').value = e.target.getAttribute('data-wh');
+							calculateTireSpecs();
+						});
+					});
+				});
+			</script>
+
+            
 			<!-- Hours & Location -->
 			<section class="info" id="location">
 				<h2>Shop Hours & Location</h2>
@@ -278,5 +365,100 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 		color: #888;
 		margin-top: 1rem;
 	}
+     	/* Tire Lookup Block Layout */
+	.tire-tool { margin-top: 4rem; }
+	.tool-container {
+		background: #111111;
+		color: #ffffff;
+		padding: 2.5rem 1.5rem;
+		border-radius: 12px;
+		text-align: center;
+	}
+	.tool-intro { color: #cccccc; margin-bottom: 2rem; font-size: 1.05rem; }
+	
+	.calculator-box {
+		max-width: 500px;
+		margin: 0 auto;
+		background: #222222;
+		padding: 1.5rem;
+		border-radius: 8px;
+		border: 1px solid #333333;
+	}
+	.input-row {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.5rem;
+		margin-bottom: 1.5rem;
+	}
+	.input-group {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		flex: 1;
+	}
+	.input-group label {
+		font-size: 0.75rem;
+		text-transform: uppercase;
+		letter-spacing: 0.05rem;
+		color: #aaa;
+		margin-bottom: 0.4rem;
+	}
+	.input-group input {
+		width: 100%;
+		padding: 0.6rem;
+		background: #333;
+		border: 1px solid #444;
+		color: white;
+		border-radius: 4px;
+		text-align: center;
+		font-size: 1.2rem;
+		font-weight: bold;
+	}
+	.input-sep {
+		font-size: 1.5rem;
+		font-weight: bold;
+		color: #ff4500;
+		padding-top: 1.2rem;
+	}
+	.calculator-box button {
+		width: 100%;
+		cursor: pointer;
+		border: none;
+	}
+
+	/* Dynamic Visual Result Cards */
+	.results-box {
+		display: flex;
+		gap: 1rem;
+		max-width: 500px;
+		margin: 1.5rem auto 0;
+	}
+	.result-card {
+		flex: 1;
+		background: #1a1a1a;
+		padding: 1rem;
+		border-radius: 6px;
+		border: 1px solid #ff4500;
+	}
+	.result-label { display: block; font-size: 0.85rem; color: #aaa; margin-bottom: 0.25rem; }
+	.result-card strong { font-size: 1.4rem; color: white; }
+
+	/* Fast-Click Preset Badge Row */
+	.common-sizes { margin-top: 2rem; border-top: 1px solid #333; padding-top: 1.5rem; }
+	.common-sizes h3 { font-size: 1.1rem; color: #fff; margin-bottom: 1rem; }
+	.size-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; }
+	.size-tag {
+		background: #333;
+		color: white;
+		border: 1px solid #444;
+		padding: 0.4rem 0.8rem;
+		border-radius: 20px;
+		cursor: pointer;
+		font-size: 0.9rem;
+		transition: all 0.2s ease;
+		box-sizing: border-box;
+	}
+	.size-tag:hover { background: #ff4500; border-color: #ff4500; }
 
 </style>
