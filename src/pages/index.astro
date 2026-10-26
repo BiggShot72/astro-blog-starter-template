@@ -53,6 +53,18 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 					</div>
 				</div>
 			</section>
+
+			<!-- Financing Section -->
+			<section class="financing" id="financing">
+				<h2>Easy Tire Financing</h2>
+				<div class="financing-card">
+					<h3>💳 Buy Now, Pay Later with Kafene</h3>
+					<p>Get the new tires you need today with flexible, budget-friendly lease-to-own options.</p>
+					<div class="financing-cta">
+						<a href="https://gokafene.com/UmiqtJf" target="_blank" rel="noopener noreferrer" class="btn-primary">👉 Apply Here</a>
+					</div>
+				</div>
+			</section>
 		</main>
 		<Footer />
 	</body>
@@ -137,11 +149,18 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 	.hero h1 { font-size: 2.5rem; margin-bottom: 0.5rem; color: #fff; }
 	.tagline { font-size: 1.2rem; color: #ccc; }
 	.cta-buttons { margin-top: 1.5rem; display: flex; gap: 1rem; justify-content: center; }
-	.btn-primary { background: #ff4500; color: white; padding: 0.8rem 1.5rem; border-radius: 5px; text-decoration: none; font-weight: bold; }
-	.btn-secondary { background: #333; color: white; padding: 0.8rem 1.5rem; border-radius: 5px; text-decoration: none; }
-	.services, .info { margin-top: 3rem; }
+	.btn-primary { background: #ff4500; color: white; padding: 0.8rem 1.5rem; border-radius: 5px; text-decoration: none; font-weight: bold; display: inline-block; }
+	.btn-secondary { background: #333; color: white; padding: 0.8rem 1.5rem; border-radius: 5px; text-decoration: none; display: inline-block; }
+	.services, .info, .financing { margin-top: 3rem; }
 	h2 { border-bottom: 2px solid #ccc; padding-bottom: 0.5rem; margin-bottom: 1rem; }
 	ul { list-style-type: none; padding: 0; }
 	li { padding: 0.5rem 0; font-size: 1.1rem; }
 	.info-grid { display: flex; gap: 2rem; justify-content: space-between; flex-wrap: wrap; }
+	
+	/* Financing Styles */
+	.financing { text-align: center; margin-bottom: 2rem; }
+	.financing-card { background: #f9f9f9; padding: 2rem; border-radius: 8px; border: 1px solid #ddd; }
+	.financing-card h3 { margin-top: 0; color: #111; }
+	.financing-card p { font-size: 1.1rem; color: #555; margin-bottom: 1.5rem; }
+	.financing-cta { display: flex; justify-content: center; }
 </style>
