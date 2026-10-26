@@ -5,10 +5,12 @@ import { SITE_TITLE } from '../consts';
 
 <header>
 	<nav>
-		<h2 class="site-title"><a href="/">{SITE_TITLE}</a></h2>
+		<h2><a href="/">{SITE_TITLE}</a></h2>
 		<div class="internal-links">
 			<HeaderLink href="/">Home</HeaderLink>
-			<HeaderLink href="tel:9318962440">📞 Call Shop</HeaderLink>
+			<HeaderLink href="/#services">Services</HeaderLink>
+			<HeaderLink href="/#location">Hours & Location</HeaderLink>
+			<HeaderLink href="/#financing" class="nav-financing">Financing</HeaderLink>
 		</div>
 	</nav>
 </header>
@@ -19,15 +21,14 @@ import { SITE_TITLE } from '../consts';
 		padding: 0 1rem;
 		background: white;
 		box-shadow: 0 2px 8px rgba(var(--black), 5%);
-		width: 100%;
-		box-sizing: border-box;
 	}
-	.site-title {
+	h2 {
 		margin: 0;
-		font-size: 1.5rem; /* Forces a solid readable size */
-		white-space: nowrap;
+		font-size: 1.5rem;
 	}
-	.site-title a {
+	h2 a,
+	h2 a.active {
+		text-align: center;
 		text-decoration: none;
 		color: #111;
 	}
@@ -38,44 +39,26 @@ import { SITE_TITLE } from '../consts';
 		max-width: 960px;
 		margin: 0 auto;
 		padding: 1rem 0;
-		width: 100%;
 	}
 	.internal-links {
 		display: flex;
 		gap: 1.5rem;
+		align-items: center;
 	}
 	nav a {
-		padding: 0.5rem 0.25rem;
+		padding: 0.5rem 0.5rem;
 		color: #333;
 		border-bottom: 4px solid transparent;
 		text-decoration: none;
 		font-weight: 500;
-		font-size: 1.1rem; /* Keeps link text large and legible */
 	}
 	nav a.active {
+		text-decoration: none;
 		border-bottom-color: #ff4500;
 		font-weight: bold;
 	}
-
-	/* Mobile Layout Fixes: Strips out template alignment compression */
-	@media (max-width: 600px) {
-		nav {
-			flex-direction: column !important;
-			gap: 1rem !important;
-			text-align: center !important;
-			align-items: center !important;
-			justify-content: center !important;
-			padding: 1rem 0 !important;
-		}
-		.site-title {
-			text-align: center !important;
-			width: 100% !important;
-			font-size: 1.6rem !important; /* Makes your name prominent */
-		}
-		.internal-links {
-			justify-content: center !important;
-			width: 100% !important;
-			gap: 2.5rem !important; /* Gives the links room to breathe */
-		}
+	.nav-financing {
+		color: #ff4500 !important;
+		font-weight: bold;
 	}
 </style>
