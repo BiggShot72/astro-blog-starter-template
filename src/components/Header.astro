@@ -9,7 +9,7 @@ import { SITE_TITLE } from '../consts';
 		<div class="internal-links">
 			<HeaderLink href="/">Home</HeaderLink>
 			<HeaderLink href="/#services">Services</HeaderLink>
-			<HeaderLink href="/#location">Hours & Location</HeaderLink>
+			<HeaderLink href="/#location">Hours</HeaderLink>
 			<HeaderLink href="/#financing" class="nav-financing">Financing</HeaderLink>
 		</div>
 	</nav>
@@ -21,10 +21,13 @@ import { SITE_TITLE } from '../consts';
 		padding: 0 1rem;
 		background: white;
 		box-shadow: 0 2px 8px rgba(var(--black), 5%);
+		width: 100%;
+		box-sizing: border-box;
 	}
 	h2 {
 		margin: 0;
 		font-size: 1.5rem;
+		white-space: nowrap;
 	}
 	h2 a,
 	h2 a.active {
@@ -42,11 +45,11 @@ import { SITE_TITLE } from '../consts';
 	}
 	.internal-links {
 		display: flex;
-		gap: 1.5rem;
+		gap: 1.25rem;
 		align-items: center;
 	}
 	nav a {
-		padding: 0.5rem 0.5rem;
+		padding: 0.5rem 0.25rem;
 		color: #333;
 		border-bottom: 4px solid transparent;
 		text-decoration: none;
@@ -60,5 +63,31 @@ import { SITE_TITLE } from '../consts';
 	.nav-financing {
 		color: #ff4500 !important;
 		font-weight: bold;
+	}
+
+	/* Responsive mobile fixes that match your layout overrides */
+	@media (max-width: 600px) {
+		header {
+			padding: 0 0.5rem;
+		}
+		nav {
+			flex-direction: column !important;
+			gap: 0.75rem;
+			padding: 1rem 0;
+		}
+		h2 {
+			font-size: 1.6rem !important;
+			text-align: center;
+		}
+		.internal-links {
+			justify-content: center !important;
+			gap: 0.75rem !important;
+			width: 100% !important;
+			flex-wrap: wrap;
+		}
+		nav a {
+			font-size: 1rem !important;
+			padding: 0.25rem 0.4rem !important;
+		}
 	}
 </style>
